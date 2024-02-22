@@ -1,8 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using PruebaTecnica02FJMAJueves22.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext< PruebaTecnica02FJMAContext> (options =>
+   options.UseSqlServer(builder.Configuration.GetConnectionString("cnn")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
